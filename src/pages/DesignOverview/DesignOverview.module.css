@@ -1,0 +1,55 @@
+.component {
+  padding: var(--size-32) var(--size-24) var(--size-64);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-80);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-32);
+}
+
+.sectionBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-20);
+}
+
+.row {
+  display: flex;
+  gap: var(--size-24);
+
+  & > .rowLabelLayout {
+    flex-basis: var(--size-100);
+    flex-shrink: 0;
+  }
+}
+
+.rowContent {
+  display: flex;
+  align-items: center;
+  gap: var(--size-12);
+  flex-wrap: wrap;
+}
+
+.contextMenuTrigger {
+  border: 1px dashed var(--background-color);
+  border-radius: var(--radius-8);
+  padding: var(--size-12) var(--size-16);
+  cursor: context-menu;
+  user-select: none;
+}
+
+.iconRow {
+  display: flex;
+  align-items: center;
+  gap: var(--size-20);
+  color: var(--color);
+
+  & > .iconLayout {
+    width: var(--size-24);
+    height: var(--size-24);
+  }
+}

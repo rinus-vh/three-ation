@@ -1,0 +1,11 @@
+{
+  "stylelint.validate": ["css", "postcss"],
+  "stylelint.packageManager": "pnpm",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.fixAll.stylelint": "always"
+  },
+  "[postcss]": {
+    "editor.formatOnSave": false
+  }
+}

@@ -1,0 +1,24 @@
+html {
+  /* stylelint-disable-next-line custom/layout-related-properties */
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-16-18);
+  font-weight: var(--font-weight-400);
+  background-color: var(--background-color, var(--color-white));
+  color: var(--color, var(--color-black));
+  transition: background-color var(--duration-250), color var(--duration-250);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-weight: var(--font-weight-300);
+}
+
+h1 {
+  font-size: var(--font-size-40);
+}

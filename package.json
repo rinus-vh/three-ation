@@ -1,0 +1,45 @@
+{
+  "name": "vite-proto-template",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "lint:css": "stylelint \"src/**/*.css\" --max-warnings 0",
+    "lint:css:fix": "stylelint \"src/**/*.css\" --fix",
+    "hooks:install": "6njp-install-hooks",
+    "source:local": "6njp-source local && pnpm install",
+    "source:remote": "6njp-source remote && pnpm install"
+  },
+  "dependencies": {
+    "@6njp/prototype-library": "github:rinus-vh/prototype-library",
+    "@floating-ui/react": "^0.27.19",
+    "@use-gesture/react": "^10.3.1",
+    "lucide-react": "^1.17.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@6njp/eslint-plugin": "github:rinus-vh/plugins#path:eslint-plugin",
+    "@6njp/stylelint-plugin": "github:rinus-vh/plugins#path:stylelint-plugin",
+    "@eslint/js": "^9.39.4",
+    "@stylistic/eslint-plugin": "^2.13.0",
+    "@vitejs/plugin-react": "^6.0.2",
+    "esbuild": "^0.27",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "stylelint": "^17.13.0",
+    "vite": "^8.0.16"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "packageManager": "pnpm@11.0.8"
+}

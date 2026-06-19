@@ -1,0 +1,8 @@
+#!/bin/sh
+# Warn (yellow) if staging package.json with local @6njp sources (link:/file:).
+# Logic lives in @6njp/prototype-library (single place to maintain).
+# Fix before pushing: pnpm source:remote
+SCRIPT="node_modules/@6njp/prototype-library/dev/pre-commit-warn.js"
+cd "$(git rev-parse --show-toplevel)" || exit 0
+[ -f "$SCRIPT" ] || exit 0
+exec node "$SCRIPT"

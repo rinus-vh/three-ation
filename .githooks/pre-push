@@ -1,0 +1,10 @@
+#!/bin/sh
+# Pre-push guard: block pushing a commit whose package.json still references LOCAL
+# @6njp sources (file:/link:). Enabled via `pnpm hooks:install` (core.hooksPath).
+# Fix a blocked push with `pnpm source:remote`, recommit, then push again.
+#
+# The guard logic lives in @6njp/prototype-library (single source of truth). Run
+# from the repo root so plain `git` resolves; git pipes the push payload on stdin
+# and `exec` hands it through to the checker untouched.
+cd "$(git rev-parse --show-toplevel)" || exit 1
+exec node node_modules/@6njp/prototype-library/dev/check-remote-sources.js
