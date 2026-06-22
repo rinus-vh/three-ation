@@ -48,12 +48,5 @@
   "engines": {
     "node": ">=22.0.0"
   },
-  "packageManager": "pnpm@11.0.8",
-  "pnpm": {
-    "ignoredBuiltDependencies": [
-      "onnxruntime-node",
-      "protobufjs",
-      "sharp"
-    ]
-  }
+  "packageManager": "pnpm@11.0.8"
 }
