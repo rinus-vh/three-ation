@@ -4,6 +4,7 @@ import reactPlugin from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import stylistic from '@stylistic/eslint-plugin'
+import r3fPlugin from '@react-three/eslint-plugin'
 import { createRequire } from 'node:module'
 
 const require = createRequire(import.meta.url)
@@ -18,9 +19,15 @@ export default [
   // Base JS recommended
   js.configs.recommended,
 
-  // Node scripts
+  // React Three Fiber — adds R3F-specific rules (no-clone-in-loop, no-new-in-loop)
   {
-    files: ['scripts/**/*.js'],
+    plugins: { '@react-three': r3fPlugin },
+    rules: r3fPlugin.configs.recommended.rules,
+  },
+
+  // Node scripts + Vite config (run in Node, may use process/etc.)
+  {
+    files: ['scripts/**/*.js', 'vite.config.js'],
     languageOptions: {
       globals: globals.node,
     },
@@ -61,6 +68,24 @@ export default [
       'react/prop-types': 'off',        // JSDoc serves as prop documentation in this template
       'react/self-closing-comp': 'warn',
       'react/jsx-curly-brace-presence': ['warn', { props: 'never', children: 'never' }],
+
+      // React Three Fiber JSX uses Three.js-specific props that the base rule doesn't know about.
+      // We extend the ignore list rather than disabling the rule so real typos still surface.
+      'react/no-unknown-property': ['error', {
+        ignore: [
+          // Three.js geometry / mesh props
+          'args', 'attach', 'position', 'rotation', 'scale', 'up',
+          'receiveShadow', 'castShadow', 'object', 'geometry', 'material',
+          // Material props
+          'wireframe', 'side', 'transparent', 'opacity', 'vertexColors', 'map', 'depthWrite',
+          // Light props
+          'intensity', 'angle', 'penumbra', 'decay', 'distance', 'color',
+          'target', 'groundColor',
+          // Camera / control props
+          'fov', 'near', 'far', 'makeDefault', 'enableDamping', 'enablePan',
+          'minDistance', 'maxDistance', 'dpr',
+        ],
+      }],
 
       // Hooks
       ...reactHooks.configs.recommended.rules,

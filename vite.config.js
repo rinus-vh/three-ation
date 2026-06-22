@@ -104,12 +104,30 @@ export default defineConfig({
     // React-context-bearing peer so the app and the library can never end up with
     // two instances ("Invalid hook call", broken floating/gesture context). Always
     // resolve to this project's copy. (All of these are direct deps here.)
-    dedupe: ['react', 'react-dom', '@floating-ui/react', '@use-gesture/react'],
+    dedupe: ['react', 'react-dom', '@floating-ui/react', '@use-gesture/react', 'keen-slider'],
   },
   // Consume the library as source, never pre-bundled — so the transforms above
   // (React global, JSX, cx, CSS Modules) all run against it.
+  //
+  // Pre-bundle the 3D stack (three + react-three) and the three exporters at
+  // startup via `include`. These are only reached when the viewer first mounts;
+  // without this, Vite discovers them mid-session, re-optimizes deps, and forces
+  // a full page reload in the middle of rendering — which briefly loads a second
+  // copy of React and throws "Invalid hook call". Pre-declaring them keeps React
+  // a single instance and avoids the reload.
   optimizeDeps: {
-    exclude: [LIBRARY_PKG],
+    // Exclude the library (raw source) and transformers.js (loads its own WASM
+    // via dynamic imports — pre-bundling would break the WASM resolution).
+    exclude: [LIBRARY_PKG, '@huggingface/transformers'],
+    include: [
+      'three',
+      '@react-three/fiber',
+      '@react-three/drei',
+      'three/examples/jsm/exporters/OBJExporter.js',
+      'three/examples/jsm/exporters/GLTFExporter.js',
+      'keen-slider',
+      'keen-slider/react',
+    ],
   },
   server: {
     port: parseInt(process.env.PORT ?? '5176'),

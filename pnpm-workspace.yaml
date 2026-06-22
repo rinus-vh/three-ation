@@ -2,3 +2,6 @@
 # esbuild ships a native binary via its install script, so it must be allowed to build.
 allowBuilds:
   esbuild: true
+  onnxruntime-node: set this to true or false
+  protobufjs: set this to true or false
+  sharp: set this to true or false

@@ -1,0 +1,26 @@
+# Core server
+flask>=3.0
+flask-cors>=4.0
+
+# Stage: depth  (Depth-Anything V2 Small)
+transformers>=4.40
+torch>=2.0
+Pillow>=10.0
+numpy>=1.24
+
+# Stage: reconstruct  (TripoSR)
+# Clone TripoSR first:
+#   git clone https://github.com/VAST-AI-Research/TripoSR.git server/vendor/TripoSR
+trimesh>=4.0
+einops>=0.7
+omegaconf>=2.3
+huggingface_hub>=0.20
+
+# Stage: multiview  (Zero123++)
+diffusers>=0.25
+accelerate>=0.25
+
+# Stage: reconstruct3d  (visual hull + marching cubes — CPU/MPS compatible)
+open3d>=0.18
+scipy>=1.10
+scikit-image>=0.21

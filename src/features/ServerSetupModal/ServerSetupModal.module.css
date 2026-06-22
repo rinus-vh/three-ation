@@ -1,0 +1,58 @@
+.componentSetupPage,
+.componentCleanupPage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-20);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-12);
+  padding-left: var(--size-20);
+  margin: 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-6);
+  font-size: var(--font-size-14);
+  color: color-mix(in srgb, var(--color) 80%, transparent);
+}
+
+.stepLabel {
+  line-height: 1.4;
+}
+
+.componentCopyableCode {
+  display: flex;
+  align-items: center;
+  gap: var(--size-4);
+  border-radius: var(--radius-8);
+  background: color-mix(in srgb, var(--color) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color) 12%, transparent);
+  padding-right: var(--size-4);
+
+  & > .copyButtonLayout {
+    flex-shrink: 0;
+  }
+}
+
+.code {
+  display: block;
+  flex: 1;
+  padding: var(--size-8) var(--size-12);
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+  font-size: var(--font-size-13, 13px);
+  color: var(--dynamic-color);
+  user-select: all;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--size-12);
+  padding-top: var(--size-4);
+}
